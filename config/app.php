@@ -123,4 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'temp_email_domain' => env('TEMP_EMAIL_DOMAIN', 'ibrahimtempemails'),
+
+
 ];

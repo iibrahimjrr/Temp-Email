@@ -9,10 +9,14 @@ class TemporaryEmail extends Model
 {
     protected $fillable = ['email', 'expires_at'];
 
+    protected $casts = [
+        'expires_at' => 'datetime',
+    ];
+
     public static function generate()
     {
         $localPart = Str::random(10); 
-        $domain    = 'shtey-digital.test';
+        $domain    = config('app.temp_email_domain', 'ibrahim.com');
         $email     = $localPart . '@' . $domain;
 
         return self::create([
@@ -26,4 +30,3 @@ class TemporaryEmail extends Model
         return $this->expires_at->isPast();
     }
 }
-
